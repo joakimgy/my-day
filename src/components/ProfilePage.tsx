@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { auth } from "firebase";
+import { UserContext } from "../providers/UserProvider";
 
 const ProfilePage = () => {
+  const { user } = useContext(UserContext);
+  if (!user) return null;
+
+  const { photoURL, displayName, email } = user;
+
   return (
     <div>
       <div>
         <div
           style={{
-            background: `url(https://res.cloudinary.com/dqcsk8rsc/image/upload/v1577268053/avatar-1-bitmoji_upgwhc.png)  no-repeat center center`,
+            background: `url(${photoURL})  no-repeat center center`,
             backgroundSize: "cover",
             height: "200px",
             width: "200px",
           }}
         ></div>
         <div>
-          <h2>Ronald</h2>
-          <h3>test@gmail.com</h3>
+          <h2>{displayName}</h2>
+          <h3>{email}</h3>
         </div>
       </div>
       <button
