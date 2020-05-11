@@ -8,6 +8,7 @@ const ProfilePage = () => {
   return (
     <div>
       <div>
+        <h1>My page</h1>
         <div
           style={{
             background: `url(${photoURL})  no-repeat center center`,
