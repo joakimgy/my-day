@@ -29,7 +29,6 @@ jobs:
       - name: Checkout to master
         uses: actions/checkout@master
       - name: Deploy to Firebase
-        with:
-          args: deploy --only hosting
+        run: firebase deploy --token $FIREBASE_TOKEN
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
