@@ -24,10 +24,10 @@ export const signInWithGoogle = () => {
 };
 
 export const generateUserDocument = async (
-  user: User,
-  additionalData: firebase.firestore.DocumentData
+  user: User | null,
+  additionalData?: firebase.firestore.DocumentData
 ) => {
-  if (!user) return;
+  if (!user) return undefined;
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
   if (!snapshot.exists) {

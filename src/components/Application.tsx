@@ -6,12 +6,14 @@ import SignUp from "./Login/SignUp";
 import SignIn from "./Login/SignIn";
 import { auth } from "firebase";
 import { UserContext, User } from "../providers/UserProvider";
+import { generateUserDocument } from "../firebase";
 
 function Application() {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    auth().onAuthStateChanged(function (user) {
+    auth().onAuthStateChanged(async (userAuth) => {
+      const user = await generateUserDocument(userAuth);
       if (user) {
         setUser(user);
       } else {

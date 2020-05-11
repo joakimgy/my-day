@@ -1,23 +1,38 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.scss";
-import { signInWithGoogle } from "../../firebase";
+import { signInWithGoogle, generateUserDocument } from "../../firebase";
+import { auth } from "firebase";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [error, setError] = useState(null);
-  const createUserWithEmailAndPasswordHandler = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    email: string,
-    password: string
+  const [error, setError] = useState("");
+
+  const createUserWithEmailAndPasswordHandler = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.preventDefault();
+    try {
+      const { user } = await auth().createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      if (user) {
+        generateUserDocument(user, { displayName });
+      } else {
+        throw Error;
+      }
+    } catch (error) {
+      setError("Error Signing up with email and password");
+      console.error("Error Signing up with email and password");
+    }
     setEmail("");
     setPassword("");
     setDisplayName("");
   };
+
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
     if (name === "userEmail") {
@@ -28,6 +43,7 @@ const SignUp = () => {
       setDisplayName(value);
     }
   };
+
   return (
     <div className="login">
       <h1>Sign Up</h1>
@@ -40,7 +56,7 @@ const SignUp = () => {
           value={displayName}
           placeholder="E.g: Ronald"
           id="displayName"
-          onChange={(event) => onChangeHandler(event)}
+          onChange={onChangeHandler}
         />
         <label htmlFor="userEmail">Email:</label>
         <input
@@ -49,7 +65,7 @@ const SignUp = () => {
           value={email}
           placeholder="E.g: test@gmail.com"
           id="userEmail"
-          onChange={(event) => onChangeHandler(event)}
+          onChange={onChangeHandler}
         />
         <label htmlFor="userPassword">Password:</label>
         <input
@@ -58,11 +74,11 @@ const SignUp = () => {
           value={password}
           placeholder="Your Password"
           id="userPassword"
-          onChange={(event) => onChangeHandler(event)}
+          onChange={onChangeHandler}
         />
         <button
           onClick={(event) => {
-            createUserWithEmailAndPasswordHandler(event, email, password);
+            createUserWithEmailAndPasswordHandler(event);
           }}
         >
           Sign up
