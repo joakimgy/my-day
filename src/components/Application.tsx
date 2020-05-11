@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Route, HashRouter, Switch, Redirect } from "react-router-dom";
 import SignUp from "./Login/SignUp";
 import SignIn from "./Login/SignIn";
-import { auth, User } from "firebase";
-import { UserContext } from "../providers/UserProvider";
+import { auth } from "firebase";
+import { UserContext, User } from "../providers/UserProvider";
 
 function Application() {
   const [user, setUser] = useState<User>();

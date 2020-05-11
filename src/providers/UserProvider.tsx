@@ -1,17 +1,17 @@
 import { createContext } from "react";
 
-type UserProviderType = {
+export type User = {
   uid?: any;
   email?: any;
   displayName?: any;
   photoURL?: any;
 };
 
-const defaultUser: UserProviderType = {
+const defaultUser: User = {
   uid: undefined,
   email: undefined,
   displayName: undefined,
   photoURL: undefined,
 };
 
-export const UserContext = createContext<UserProviderType>(defaultUser);
+export const UserContext = createContext<User>(defaultUser);

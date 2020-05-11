@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { User } from "./providers/UserProvider";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAOO77q6ywn-pHqrkoY6Xi1hNPrXtsG07E",
@@ -23,7 +24,7 @@ export const signInWithGoogle = () => {
 };
 
 export const generateUserDocument = async (
-  user: { uid?: any; email?: any; displayName?: any; photoURL?: any },
+  user: User,
   additionalData: firebase.firestore.DocumentData
 ) => {
   if (!user) return;
