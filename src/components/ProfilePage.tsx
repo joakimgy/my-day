@@ -1,4 +1,5 @@
 import React from "react";
+import { auth } from "firebase";
 
 const ProfilePage = () => {
   return (
@@ -17,7 +18,13 @@ const ProfilePage = () => {
           <h3>test@gmail.com</h3>
         </div>
       </div>
-      <button>Sign out</button>
+      <button
+        onClick={() => {
+          auth().signOut();
+        }}
+      >
+        Sign out
+      </button>
     </div>
   );
 };

@@ -1,14 +1,29 @@
 import ProfilePage from "./ProfilePage";
 import PasswordReset from "./Login/PasswordReset";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, HashRouter, Switch, Redirect } from "react-router-dom";
 import SignUp from "./Login/SignUp";
 import SignIn from "./Login/SignIn";
+import { auth, User } from "firebase";
+import { UserContext } from "../providers/UserProvider";
 
 function Application() {
-  const user = null;
+  const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    auth().onAuthStateChanged(function (user) {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(undefined);
+      }
+    });
+  }, []);
+
   return user ? (
-    <ProfilePage />
+    <UserContext.Provider value={{ user: user }}>
+      <ProfilePage />
+    </UserContext.Provider>
   ) : (
     <HashRouter>
       <Switch>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.scss";
+import { signInWithGoogle } from "../../firebase";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -68,7 +69,7 @@ const SignUp = () => {
         </button>
       </form>
       <p>or</p>
-      <button>Sign In with Google</button>
+      <button onClick={signInWithGoogle}>Sign In with Google</button>
       <p>
         Already have an account? <Link to="/SignIn">Sign in here</Link>
       </p>
