@@ -21,7 +21,7 @@ function Application() {
   }, []);
 
   return user ? (
-    <UserContext.Provider value={{ user: user }}>
+    <UserContext.Provider value={user}>
       <ProfilePage />
     </UserContext.Provider>
   ) : (

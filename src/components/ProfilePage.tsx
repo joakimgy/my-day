@@ -3,10 +3,7 @@ import { auth } from "firebase";
 import { UserContext } from "../providers/UserProvider";
 
 const ProfilePage = () => {
-  const { user } = useContext(UserContext);
-  if (!user) return null;
-
-  const { photoURL, displayName, email } = user;
+  const { photoURL, displayName, email } = useContext(UserContext);
 
   return (
     <div>
