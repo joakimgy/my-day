@@ -1,4 +1,4 @@
-import ProfilePage from "./ProfilePage";
+import ProfilePage from "./ProfilePage/ProfilePage";
 import React, { useState, useEffect } from "react";
 import { Route, HashRouter, Switch, Redirect } from "react-router-dom";
 import SignIn from "./Login/SignIn";

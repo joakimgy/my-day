@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { auth } from "firebase";
-import { UserContext } from "../providers/UserProvider";
+import { UserContext } from "../../providers/UserProvider";
+import "./ProfilePage.scss";
 
 const ProfilePage = () => {
   const { photoURL, displayName, email } = useContext(UserContext);
@@ -23,6 +24,7 @@ const ProfilePage = () => {
         </div>
       </div>
       <button
+        className="logout"
         onClick={() => {
           auth().signOut();
         }}
