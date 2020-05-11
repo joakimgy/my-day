@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: Checkout to master
       uses: actions/checkout@master
+    - name: Install dependencies
+      run: npm install
     - name: Build
       run: npm run build
       
