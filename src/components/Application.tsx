@@ -1,5 +1,5 @@
 import ProfilePage from "./ProfilePage/ProfilePage";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, HashRouter, Switch, Redirect } from "react-router-dom";
 import SignIn from "./Login/SignIn";
 import { auth } from "firebase";
@@ -8,15 +8,13 @@ import { UserContext, User } from "../providers/UserProvider";
 function Application() {
   const [user, setUser] = useState<User>();
 
-  useEffect(() => {
-    auth().onAuthStateChanged(function (user) {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(undefined);
-      }
-    });
-  }, []);
+  auth().onAuthStateChanged((user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      setUser(undefined);
+    }
+  });
 
   return user ? (
     <UserContext.Provider value={user}>

@@ -3,9 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import Application from "./components/Application";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Application />
-  </React.StrictMode>,
-  document.getElementById("root")
+ReactDOM.unstable_createRoot(document.getElementById("root")).render(
+  <Application />
 );
