@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { auth } from "firebase";
-import { UserContext } from "../../providers/UserProvider";
 import "./ProfilePage.scss";
 
 const ProfilePage = () => {
-  const { photoURL, displayName, email } = useContext(UserContext);
+  const photoURL = "";
+  const displayName = "";
+  const email = "";
 
   return (
     <div>

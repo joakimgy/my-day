@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import Application from "./components/Application";
+import App from "./App";
 
-ReactDOM.unstable_createRoot(document.getElementById("root")).render(
-  <Application />
-);
+ReactDOM.unstable_createRoot(document.getElementById("root")).render(<App />);
