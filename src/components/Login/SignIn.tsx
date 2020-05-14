@@ -1,5 +1,4 @@
 import React from "react";
-import "./Login.scss";
 import { signInWithGoogle } from "../../firebase";
 import { motion } from "framer-motion";
 

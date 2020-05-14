@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
+  font-size: 1.5rem;
+
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -14,7 +16,30 @@ body {
   background: linear-gradient(to left, #76b852, #8dc26f);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+// HTML elements
+button {
+  width: 100%;
+  height: 4rem;
+  margin: 3rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  background: #4caf50;
+  font-size: 1.5rem;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+button:hover,
+button:active,
+button:focus {
+  background: #43a047;
+}
+
+// More specific CSS
+.login {
+  background: #ffffff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
