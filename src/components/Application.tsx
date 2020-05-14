@@ -5,7 +5,7 @@ import { AuthCheck, SuspenseWithPerf } from "reactfire";
 
 function Application() {
   return (
-    <SuspenseWithPerf fallback="Loading..." traceId={"load-auth"}>
+    <SuspenseWithPerf fallback="" traceId={"load-auth"}>
       <AuthCheck fallback={SignIn}>
         <ProfilePage />
       </AuthCheck>
