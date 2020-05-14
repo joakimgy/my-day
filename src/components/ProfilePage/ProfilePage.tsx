@@ -1,11 +1,10 @@
 import React from "react";
-import { auth } from "firebase";
+import { auth, User } from "firebase";
 import "./ProfilePage.scss";
+import { useUser } from "reactfire";
 
 const ProfilePage = () => {
-  const photoURL = "";
-  const displayName = "";
-  const email = "";
+  const user = useUser<User>();
 
   return (
     <div>
@@ -13,15 +12,15 @@ const ProfilePage = () => {
         <h1>My page</h1>
         <div
           style={{
-            background: `url(${photoURL})  no-repeat center center`,
+            background: `url(${user.photoURL})  no-repeat center center`,
             backgroundSize: "cover",
             height: "200px",
             width: "200px",
           }}
         ></div>
         <div>
-          <h2>{displayName}</h2>
-          <h3>{email}</h3>
+          <h2>{user.displayName}</h2>
+          <h3>{user.email}</h3>
         </div>
       </div>
       <button

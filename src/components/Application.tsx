@@ -1,19 +1,15 @@
 import ProfilePage from "./ProfilePage/ProfilePage";
 import React from "react";
 import SignIn from "./Login/SignIn";
-import { AuthCheck } from "reactfire";
+import { AuthCheck, SuspenseWithPerf } from "reactfire";
 
 function Application() {
   return (
-    <>
-      <h1>Bzz</h1>
+    <SuspenseWithPerf fallback="Loading..." traceId={"load-auth"}>
       <AuthCheck fallback={SignIn}>
-        <>
-          yo
-          <ProfilePage />
-        </>
+        <ProfilePage />
       </AuthCheck>
-    </>
+    </SuspenseWithPerf>
   );
 }
 export default Application;
