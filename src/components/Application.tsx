@@ -2,11 +2,11 @@ import ProfilePage from "./ProfilePage/ProfilePage";
 import React from "react";
 import SignIn from "./Login/SignIn";
 import { AuthCheck, SuspenseWithPerf } from "reactfire";
-import { Loading } from "./Loading";
+import DelayedLoading from "./Loading/DelayedLoading";
 
 function Application() {
   return (
-    <SuspenseWithPerf fallback={<Loading />} traceId={"load-auth"}>
+    <SuspenseWithPerf fallback={<DelayedLoading />} traceId={"load-auth"}>
       <AuthCheck fallback={SignIn}>
         <ProfilePage />
       </AuthCheck>
