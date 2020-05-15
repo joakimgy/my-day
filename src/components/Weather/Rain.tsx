@@ -8,9 +8,11 @@ type RainProps = {
 function Rain({ children }: RainProps) {
   return (
     <>
-      {Array.from(Array(150)).map(() => (
-        <div className="rain" />
-      ))}
+      <div>
+        {Array.from(Array(150)).map(() => (
+          <div className="rain" />
+        ))}
+      </div>
       {children}
     </>
   );
