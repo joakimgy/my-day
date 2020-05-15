@@ -17,11 +17,14 @@ body {
 
 // HTML elements
 button {
+  width: 100%;
+  max-width: 360px;
   color: rgba(255, 255, 255, 0.8);
   background: #4caf50;
   font-size: 1.5rem;
   padding: 1.5rem;
   border-radius: 3rem;
+  border-color: red;
   cursor: pointer;
 }
 
@@ -37,4 +40,15 @@ button:focus {
   margin: 100px auto 100px;
   padding: 3rem 6rem;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.logout {
+  background: #ff3366;
+  border-color: #ff3366;
+}
+
+.logout:hover,
+.logout:active,
+.logout:focus {
+  background: #ff0342;
 }

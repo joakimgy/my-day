@@ -1,8 +1,6 @@
 import React from "react";
 import { auth, User } from "firebase";
-import "./ProfilePage.scss";
 import { useUser } from "reactfire";
-import { Loading } from "../Loading";
 
 const ProfilePage = () => {
   const user = useUser<User>();
