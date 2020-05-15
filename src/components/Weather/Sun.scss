@@ -1,0 +1,62 @@
+/* code for the sun  */
+
+.sun *,
+.sun *:before,
+.sun *:after {
+  position: absolute;
+}
+
+/* code for the rings */
+.rings {
+  top: 15%;
+  right: 15%;
+  z-index: -1;
+}
+
+.ring {
+  width: 200px;
+  height: 200px;
+  margin: -95px 0 0 -95px;
+}
+
+.ring:before,
+.ring:after {
+  content: "";
+  height: inherit;
+  width: inherit;
+  background: inherit;
+}
+.ring:before {
+  transform: rotate(60deg);
+}
+.ring:after {
+  transform: rotate(-60deg);
+}
+
+.ring:nth-of-type(1) {
+  animation: rotateRight 49s infinite linear;
+  background: rgba(255, 185, 6, 0.5);
+}
+.ring:nth-of-type(2) {
+  animation: rotateLeft 56s infinite linear;
+  background: rgba(255, 130, 5, 0.2);
+}
+
+/* animations */
+@keyframes rotateRight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateLeft {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

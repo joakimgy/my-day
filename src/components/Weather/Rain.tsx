@@ -7,12 +7,12 @@ type RainProps = {
 
 function Rain({ children }: RainProps) {
   return (
-    <div className="rain-container">
+    <>
       {Array.from(Array(150)).map(() => (
         <div className="rain" />
       ))}
       {children}
-    </div>
+    </>
   );
 }
 
