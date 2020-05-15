@@ -16,17 +16,16 @@
   z-index: -1;
 }
 
-$rain: 1500;
+$rain: 150;
 
 @for $i from 1 through $rain {
-  $top: (random(50) + 150) * 1%;
+  $top: (random(50) + 100) * 1%;
   $left: random(100) * 1%;
   $opacity: (random(30) + 30) * 0.01;
-  $delay: random(20) - 1s;
 
   .rain:nth-of-type(#{$i}) {
     animation-name: rain-#{$i};
-    animation-delay: $delay;
+    animation-delay: random(20) - 1s;
     animation-duration: random(6) + 4s;
     animation-iteration-count: infinite;
     left: $left;
@@ -36,13 +35,12 @@ $rain: 1500;
 
   @keyframes rain-#{$i} {
     0% {
-      left: $left;
       opacity: $opacity;
       top: -$top;
     }
     100% {
       opacity: 0;
-      top: $top + 40%;
+      top: 0;
     }
   }
 }
