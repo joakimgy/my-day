@@ -2,8 +2,8 @@ import React from "react";
 import { auth, User } from "firebase";
 import { useUser } from "reactfire";
 import { motion } from "framer-motion";
-import Rain from "../Weather/Rain";
-import Sun from "../Weather/Sun";
+import Rain from "./Weather/Rain";
+import Sun from "./Weather/Sun";
 
 const ProfilePage = () => {
   const user = useUser<User>();
@@ -21,7 +21,7 @@ const ProfilePage = () => {
         animate={{ scale: 1.0, borderRadius: "10%" }}
       >
         <h2>What's up {user.displayName}?</h2>
-        <div style={{ minHeight: "80vh" }}>
+        <div style={{ minHeight: "60vh" }}>
           <Sun />
         </div>
         <motion.button

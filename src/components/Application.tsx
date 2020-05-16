@@ -1,6 +1,6 @@
-import ProfilePage from "./ProfilePage/ProfilePage";
+import ProfilePage from "./ProfilePage";
 import React from "react";
-import SignIn from "./Login/SignIn";
+import SignIn from "./SignIn";
 import { AuthCheck, SuspenseWithPerf } from "reactfire";
 import DelayedLoading from "./Loading/DelayedLoading";
 

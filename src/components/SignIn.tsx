@@ -1,5 +1,5 @@
 import React from "react";
-import { signInWithGoogle } from "../../firebase";
+import { signInWithGoogle } from "../firebase";
 import { motion } from "framer-motion";
 
 const SignIn = (
