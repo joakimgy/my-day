@@ -9,8 +9,8 @@ function Rain({ children }: RainProps) {
   return (
     <>
       <div>
-        {Array.from(Array(150)).map(() => (
-          <div className="rain" />
+        {Array.from(Array(150)).map((_, index) => (
+          <div key={index} className="rain" />
         ))}
       </div>
       {children}
