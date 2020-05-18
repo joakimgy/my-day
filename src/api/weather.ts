@@ -75,7 +75,7 @@ export type WeatherCondition =
   | "Clear"
   | "Clouds";
 
-type Weather = {
+export type Weather = {
   id: number;
   main: WeatherCondition;
   description: string;

@@ -6,12 +6,12 @@ import Rain from "./Weather/Rain";
 import Sun from "./Weather/Sun";
 import CitySearch from "./CitySearch";
 import Weather from "./Weather/Weather";
-import { WeatherCondition } from "../api/weather";
+import useWeather from "../hooks/useWeather";
 
 const ProfilePage = () => {
   const user = useUser<User>();
   const [city, setCity] = useState("");
-  const [weatherCondition, setWeatherCondition] = useState<WeatherCondition>();
+  const weather = useWeather(city);
 
   return (
     <Rain>
@@ -38,7 +38,7 @@ const ProfilePage = () => {
         {city && (
           <div>
             <p>You have selected {city}</p>
-            <Weather setWeatherCondition={setWeatherCondition} />
+            {weather && <Weather weatherCondition={weather.main} />}
           </div>
         )}
         <div style={{ minHeight: "20vh" }} />
