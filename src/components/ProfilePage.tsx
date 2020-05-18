@@ -4,6 +4,7 @@ import { useUser } from "reactfire";
 import { motion } from "framer-motion";
 import Rain from "./Weather/Rain";
 import Sun from "./Weather/Sun";
+import CitySearch from "./CitySearch";
 
 const ProfilePage = () => {
   const user = useUser<User>();
@@ -24,6 +25,10 @@ const ProfilePage = () => {
         <div style={{ minHeight: "60vh" }}>
           <Sun />
         </div>
+        <CitySearch />
+        <form>
+          <label htmlFor="country">Country</label>
+        </form>
         <motion.button
           className="logout"
           onClick={() => {
