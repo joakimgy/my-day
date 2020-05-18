@@ -1,5 +1,5 @@
 function cities() {
-  const key = "AIzaSyA4E9ZxUGlaE0hik09BbXzP-7OhQ5Nf_eo";
+  const key = process.env.REACT_APP_PLACES_KEY;
   const input = "london";
   const inputtype = "textquery";
 
