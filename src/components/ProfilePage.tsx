@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { auth, User } from "firebase";
 import { useUser } from "reactfire";
 import { motion } from "framer-motion";
@@ -8,6 +8,7 @@ import CitySearch from "./CitySearch";
 
 const ProfilePage = () => {
   const user = useUser<User>();
+  const [city, setCity] = useState("");
 
   return (
     <Rain>
@@ -22,13 +23,17 @@ const ProfilePage = () => {
         animate={{ scale: 1.0, borderRadius: "10%" }}
       >
         <h2>What's up {user.displayName}?</h2>
-        <div style={{ minHeight: "60vh" }}>
+        <div style={{ minHeight: "20vh" }}>
           <Sun />
         </div>
-        <CitySearch />
-        <form>
-          <label htmlFor="country">Country</label>
-        </form>
+        {!city && (
+          <>
+            <p>Select a city</p>
+            <CitySearch onSelect={setCity} />
+          </>
+        )}
+        {city && <p>You have selected {city}</p>}
+        <div style={{ minHeight: "20vh" }} />
         <motion.button
           className="logout"
           onClick={() => {
