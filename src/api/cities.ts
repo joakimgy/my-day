@@ -1,7 +1,5 @@
-import { firebaseConfig } from "../firebase";
-
 function cities() {
-  const key = firebaseConfig.apiKey;
+  const key = "AIzaSyA4E9ZxUGlaE0hik09BbXzP-7OhQ5Nf_eo";
   const input = "london";
   const inputtype = "textquery";
 
