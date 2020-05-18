@@ -1,23 +1,42 @@
-function cities() {
-  const key = process.env.REACT_APP_PLACES_KEY;
+async function cities() {
+  const apiKey = process.env.REACT_APP_PLACES_KEY;
   const input = "london";
-  const inputtype = "textquery";
 
-  const queryParams = `?key=${key}&input=${input}&inputtype=${inputtype}`;
-  const options: RequestInit = {
-    method: "GET",
-  };
+  const queryParams = `?key=${apiKey}&input=${input}&inputtype=textquery`;
 
-  fetch(
-    `https://maps.googleapis.com/maps/api/place/findplacefromtext/json${queryParams}`,
-    options
+  const placeid = await fetch(
+    `https://maps.googleapis.com/maps/api/place/findplacefromtext/json${queryParams}`
   )
     .then((response) => {
-      console.log(response);
+      return response.json();
     })
     .catch((err) => {
-      console.error(err);
+      console.error("Failed to fetch placeid: ", err);
+      return undefined;
     });
+
+  if (!placeid) {
+    return undefined;
+  }
+  console.log("Place id found: ", placeid);
+
+  const result = await fetch(
+    `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeid}}&key=${apiKey}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log("Failed to fetch city: ", err);
+      return undefined;
+    });
+
+  if (!result) {
+    return undefined;
+  } else {
+    console.log("City found: ", result);
+    return result;
+  }
 }
 
 export default cities;
