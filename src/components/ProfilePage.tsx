@@ -5,10 +5,13 @@ import { motion } from "framer-motion";
 import Rain from "./Weather/Rain";
 import Sun from "./Weather/Sun";
 import CitySearch from "./CitySearch";
+import Weather from "./Weather/Weather";
+import { WeatherCondition } from "../api/weather";
 
 const ProfilePage = () => {
   const user = useUser<User>();
   const [city, setCity] = useState("");
+  const [weatherCondition, setWeatherCondition] = useState<WeatherCondition>();
 
   return (
     <Rain>
@@ -27,12 +30,17 @@ const ProfilePage = () => {
           <Sun />
         </div>
         {!city && (
-          <>
+          <div>
             <p>Select a city</p>
             <CitySearch onSelect={setCity} />
-          </>
+          </div>
         )}
-        {city && <p>You have selected {city}</p>}
+        {city && (
+          <div>
+            <p>You have selected {city}</p>
+            <Weather setWeatherCondition={setWeatherCondition} />
+          </div>
+        )}
         <div style={{ minHeight: "20vh" }} />
         <motion.button
           className="logout"
