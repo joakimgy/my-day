@@ -8,7 +8,7 @@ import useWeather from "../hooks/useWeather";
 
 const ProfilePage = () => {
   const user = useUser<User>();
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("London");
   const weather = useWeather(city);
 
   return (
@@ -33,7 +33,7 @@ const ProfilePage = () => {
       {city && (
         <div>
           <p>You have selected {city}</p>
-          {weather && <Weather weatherCondition={weather.main} />}
+          {true && <Weather weatherCondition={"Rain"} />}
         </div>
       )}
       <div style={{ minHeight: "20vh" }} />
