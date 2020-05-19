@@ -1,4 +1,4 @@
-import React, { ReactNode, CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { random } from "lodash";
 
