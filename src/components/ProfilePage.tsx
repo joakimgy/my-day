@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import CitySearch from "./CitySearch";
 import Weather from "./Weather/Weather";
 import useWeather from "../hooks/useWeather";
+import LogoutButton from "./Buttons/LogoutButton";
 
 const ProfilePage = () => {
   const user = useUser<User>();
@@ -31,16 +32,7 @@ const ProfilePage = () => {
         </div>
       )}
       <div style={{ minHeight: "20vh" }} />
-      <motion.button
-        className="logout"
-        onClick={() => {
-          auth().signOut();
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        Sign out
-      </motion.button>
+      <LogoutButton onClick={() => auth().signOut()} />
     </motion.div>
   );
 };
