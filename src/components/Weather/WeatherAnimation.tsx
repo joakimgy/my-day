@@ -3,11 +3,11 @@ import { WeatherCondition } from "../../api/weather";
 import Sun from "./Sun";
 import Rain from "./Rain";
 
-type WeatherProps = {
+type WeatherAnimationProps = {
   weatherCondition: WeatherCondition;
 };
 
-function Weather({ weatherCondition }: WeatherProps) {
+function WeatherAnimation({ weatherCondition }: WeatherAnimationProps) {
   switch (weatherCondition) {
     case "Atmosphere":
       return <Rain />;
@@ -26,4 +26,4 @@ function Weather({ weatherCondition }: WeatherProps) {
   }
 }
 
-export default Weather;
+export default WeatherAnimation;

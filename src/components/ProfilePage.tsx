@@ -3,9 +3,9 @@ import { auth, User } from "firebase";
 import { useUser } from "reactfire";
 import { motion } from "framer-motion";
 import CitySearch from "./CitySearch";
-import Weather from "./Weather/Weather";
 import useWeather from "../hooks/useWeather";
 import LogoutButton from "./Buttons/LogoutButton";
+import CityOverview from "./CityOverview";
 
 const ProfilePage = () => {
   const user = useUser<User>();
@@ -25,12 +25,7 @@ const ProfilePage = () => {
     >
       <h2>What's up {user.displayName}?</h2>
       <CitySearch onSelect={setCity} />
-      {city && (
-        <div>
-          <p>You have selected {city}</p>
-          {weather && <Weather weatherCondition={weather.main} />}
-        </div>
-      )}
+      <CityOverview city={city} weather={weather} />
       <div style={{ minHeight: "20vh" }} />
       <LogoutButton onClick={() => auth().signOut()} />
     </motion.div>
