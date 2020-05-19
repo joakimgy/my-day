@@ -8,13 +8,22 @@ type WeatherProps = {
 };
 
 function Weather({ weatherCondition }: WeatherProps) {
-  return (
-    <>
-      <Sun />
-      <Rain />
-      <p>It looks like the weather is {weatherCondition}</p>
-    </>
-  );
+  switch (weatherCondition) {
+    case "Atmosphere":
+      return <Rain />;
+    case "Clear":
+      return <Sun />;
+    case "Clouds":
+      return <Sun />;
+    case "Drizzle":
+      return <Rain />;
+    case "Rain":
+      return <Rain />;
+    case "Snow":
+      return <Rain />;
+    case "Thunderstorm":
+      return <Rain />;
+  }
 }
 
 export default Weather;
