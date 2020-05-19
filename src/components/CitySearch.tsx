@@ -36,7 +36,10 @@ function CitySearch({ onSelect, ...rest }: CitySearchProps) {
       )}
       value={value}
       onChange={onChange}
-      onSelect={onSelect}
+      onSelect={(value) => {
+        setValue(value);
+        onSelect(value);
+      }}
       inputProps={{ placeholder: "Where to?" }}
     />
   );
