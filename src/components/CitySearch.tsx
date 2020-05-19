@@ -1,12 +1,20 @@
 import React, { useEffect, ChangeEvent, useState } from "react";
-import usePlacesAutocomplete from "use-places-autocomplete";
+import usePlacesAutocomplete, {
+  getLatLng,
+  getGeocode,
+} from "use-places-autocomplete";
 import Autocomplete from "react-autocomplete";
 
-type CitySearchProps = {
-  onSelect: (value: string) => void;
+export type City = {
+  name: string;
+  latLng: { lat: number; lng: number };
 };
 
-function CitySearch({ onSelect, ...rest }: CitySearchProps) {
+type CitySearchProps = {
+  onSelect: (value: City) => void;
+};
+
+function CitySearch({ onSelect }: CitySearchProps) {
   const {
     value,
     suggestions: { data },
@@ -16,6 +24,22 @@ function CitySearch({ onSelect, ...rest }: CitySearchProps) {
 
   function onChange(event: ChangeEvent<HTMLInputElement>) {
     setValue(event.target.value);
+  }
+
+  function handleSelect(value: string) {
+    const parameter = {
+      address: value,
+    };
+    getGeocode(parameter).then((results) =>
+      getLatLng(results[0]).then((latLng) => {
+        const city: City = {
+          name: value,
+          latLng,
+        };
+        onSelect(city);
+      })
+    );
+    setValue(value);
   }
 
   useEffect(() => {
@@ -37,8 +61,7 @@ function CitySearch({ onSelect, ...rest }: CitySearchProps) {
       value={value}
       onChange={onChange}
       onSelect={(value) => {
-        setValue(value);
-        onSelect(value);
+        handleSelect(value);
       }}
       inputProps={{ placeholder: "Where to?" }}
     />

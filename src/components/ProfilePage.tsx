@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { auth, User } from "firebase";
 import { useUser } from "reactfire";
 import { motion } from "framer-motion";
-import CitySearch from "./CitySearch";
+import CitySearch, { City } from "./CitySearch";
 import useWeather from "../hooks/useWeather";
 import LogoutButton from "./Buttons/LogoutButton";
 import CityOverview from "./CityOverview";
 
 const ProfilePage = () => {
   const user = useUser<User>();
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState<City>();
   const weather = useWeather(city);
 
   return (

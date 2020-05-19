@@ -1,60 +1,44 @@
-export async function fetchWeather(city: string) {
+import { City } from "../components/CitySearch";
+
+export async function fetchWeather(city: City) {
+  const {
+    latLng: { lat, lng: lon },
+  } = city;
   const apiKey = "6f25cee5ab290664850014abcda2ad73";
 
-  const queryParams = `?q=${city}&APPID=${apiKey}`;
-  const options: RequestInit = {
-    method: "GET",
-  };
-
   const weather = await fetch(
-    `http://api.openweathermap.org/data/2.5/forecast${queryParams}`,
-    options
+    `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
   ).then((response) => (response.json() as unknown) as OpenWeatherAPI);
 
   return weather;
 }
 
 export type OpenWeatherAPI = {
-  cod: string;
-  message: number;
-  cnt: number;
-  list: List[];
-  city: City;
-};
-
-type City = {
+  coord: Coord;
+  weather: Weather[];
+  base: string;
+  main: Main;
+  wind: Wind;
+  clouds: Clouds;
+  dt: number;
+  sys: Sys;
+  timezone: number;
   id: number;
   name: string;
-  coord: Coord;
+  cod: number;
+};
+
+type Sys = {
+  type: number;
+  id: number;
+  message: number;
   country: string;
-  population: number;
-  timezone: number;
   sunrise: number;
   sunset: number;
 };
 
-type Coord = {
-  lat: number;
-  lon: number;
-};
-
-type List = {
-  dt: number;
-  main: Main;
-  weather: Weather[];
-  clouds: Clouds;
-  wind: Wind;
-  sys: Sys;
-  dt_txt: string;
-  rain?: Rain;
-};
-
-type Rain = {
-  "3h": number;
-};
-
-type Sys = {
-  pod: string;
+type Clouds = {
+  all: number;
 };
 
 type Wind = {
@@ -62,8 +46,13 @@ type Wind = {
   deg: number;
 };
 
-type Clouds = {
-  all: number;
+type Main = {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
+  humidity: number;
 };
 
 export type WeatherCondition =
@@ -82,14 +71,7 @@ export type Weather = {
   icon: string;
 };
 
-type Main = {
-  temp: number;
-  feels_like: number;
-  temp_min: number;
-  temp_max: number;
-  pressure: number;
-  sea_level: number;
-  grnd_level: number;
-  humidity: number;
-  temp_kf: number;
+type Coord = {
+  lon: number;
+  lat: number;
 };

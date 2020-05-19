@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
-import { fetchWeather, OpenWeatherAPI } from "../api/weather";
+import { fetchWeather, OpenWeatherAPI, Weather } from "../api/weather";
+import { City } from "../components/CitySearch";
 
-function useWeather(city: string) {
+function useWeather(city?: City): Weather | undefined {
   const [weather, setWeather] = useState<OpenWeatherAPI | undefined>(undefined);
 
   useEffect(() => {
-    fetchWeather(city).then((data) => setWeather(data));
+    if (city) {
+      fetchWeather(city).then((data) => setWeather(data));
+    } else {
+      setWeather(undefined);
+    }
   }, [city]);
 
-  if (
-    weather &&
-    weather.list &&
-    weather.list[0] &&
-    weather.list[0].weather &&
-    weather.list[0].weather[0]
-  ) {
-    return weather?.list[0].weather[0];
+  if (weather && weather.weather && weather.weather[0]) {
+    return weather.weather[0];
   } else {
     return undefined;
   }
