@@ -19,7 +19,7 @@ const ProfilePage = () => {
         justifyContent: "center",
         alignItems: "center",
       }}
-      initial={{ scale: 0.7 }}
+      initial={{ scale: 0.5 }}
       animate={{ scale: 1.0, borderRadius: "10%" }}
     >
       <h2>What's up {user.displayName}?</h2>
