@@ -23,13 +23,7 @@ const ProfilePage = () => {
       animate={{ scale: 1.0, borderRadius: "10%" }}
     >
       <h2>What's up {user.displayName}?</h2>
-
-      {!city && (
-        <div>
-          <p>Select a city</p>
-          <CitySearch onSelect={setCity} />
-        </div>
-      )}
+      <CitySearch onSelect={setCity} />
       {city && (
         <div>
           <p>You have selected {city}</p>

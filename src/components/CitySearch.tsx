@@ -6,7 +6,7 @@ type CitySearchProps = {
   onSelect: (value: string) => void;
 };
 
-function CitySearch({ onSelect }: CitySearchProps) {
+function CitySearch({ onSelect, ...rest }: CitySearchProps) {
   const {
     value,
     suggestions: { data },
@@ -37,6 +37,7 @@ function CitySearch({ onSelect }: CitySearchProps) {
       value={value}
       onChange={onChange}
       onSelect={onSelect}
+      inputProps={{ placeholder: "Where to?" }}
     />
   );
 }
