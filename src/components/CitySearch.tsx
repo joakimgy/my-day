@@ -64,6 +64,7 @@ function CitySearch({ onSelect }: CitySearchProps) {
         handleSelect(value);
       }}
       inputProps={{ placeholder: "Where to?" }}
+      menuStyle={{ margin: "-1rem 0" }}
     />
   );
 }

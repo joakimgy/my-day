@@ -15,7 +15,7 @@ body {
   background-color: #47bfe4;
 }
 
-// HTML elements
+// Button
 button {
   width: 100%;
   max-width: 360px;
@@ -31,4 +31,13 @@ button:hover,
 button:active,
 button:focus {
   background: #43a047;
+}
+
+// Input
+input {
+  width: 15rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: inherit;
+  font-size: inherit;
 }
