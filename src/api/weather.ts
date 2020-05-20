@@ -60,9 +60,17 @@ export type WeatherCondition =
   | "Drizzle"
   | "Rain"
   | "Snow"
-  | "Atmosphere"
   | "Clear"
-  | "Clouds";
+  | "Clouds"
+  | "Mist"
+  | "Smoke"
+  | "Haze"
+  | "Dust"
+  | "Fog"
+  | "Sand"
+  | "Ash"
+  | "Squall"
+  | "Tornado";
 
 export type Weather = {
   id: number;

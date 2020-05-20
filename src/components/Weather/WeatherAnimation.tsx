@@ -9,8 +9,6 @@ type WeatherAnimationProps = {
 
 function WeatherAnimation({ weatherCondition }: WeatherAnimationProps) {
   switch (weatherCondition) {
-    case "Atmosphere":
-      return <Rain />;
     case "Clear":
       return <Sun />;
     case "Clouds":
@@ -23,6 +21,27 @@ function WeatherAnimation({ weatherCondition }: WeatherAnimationProps) {
       return <Rain />;
     case "Thunderstorm":
       return <Rain />;
+    case "Mist":
+      return <Rain />;
+    case "Smoke":
+      return <Rain />;
+    case "Haze":
+      return <Rain />;
+    case "Dust":
+      return <Rain />;
+    case "Fog":
+      return <Rain />;
+    case "Sand":
+      return <Rain />;
+    case "Ash":
+      return <Rain />;
+    case "Squall":
+      return <Rain />;
+    case "Tornado":
+      return <Rain />;
+    default:
+      console.error("No weather condition found.");
+      return null;
   }
 }
 
