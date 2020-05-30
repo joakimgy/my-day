@@ -1,4 +1,5 @@
 import { City } from "../components/CitySearch";
+import { decodeWeather } from "./decoder";
 
 export async function fetchWeather(city: City) {
   const {
@@ -8,7 +9,10 @@ export async function fetchWeather(city: City) {
 
   const weather = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
-  ).then((response) => (response.json() as unknown) as OpenWeatherAPI);
+  ).then((response) => {
+    decodeWeather();
+    return (response.json() as unknown) as OpenWeatherAPI;
+  });
 
   return weather;
 }
