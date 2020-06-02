@@ -1,4 +1,20 @@
 import { JsonDecoder } from "ts.data.json";
+import { City } from "../components/CitySearch";
+
+export async function fetchWeather(city: City) {
+  const {
+    latLng: { lat, lng: lon },
+  } = city;
+  const apiKey = process.env.REACT_APP_OPENWEATHERMAP_KEY;
+  const weather = await fetch(
+    `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+  )
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return decodeWeather(responseJson);
+    });
+  return weather;
+}
 
 export function decodeWeather(weather: OpenWeatherAPI) {
   return weatherDecoder
