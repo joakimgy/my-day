@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { auth, User } from "firebase";
 import { useUser } from "reactfire";
 import { motion } from "framer-motion";
 import CitySearch, { City } from "./CitySearch";
 import useWeather from "../hooks/useWeather";
 import LogoutButton from "./Buttons/LogoutButton";
 import CityOverview from "./CityOverview";
+import { signOut } from "../firebase";
+import { User } from "firebase";
 
 const ProfilePage = () => {
   const user = useUser<User>();
@@ -27,7 +28,7 @@ const ProfilePage = () => {
       <CitySearch onSelect={setCity} />
       <CityOverview city={city} weather={weather} />
       <div style={{ minHeight: "20vh" }} />
-      <LogoutButton onClick={() => auth().signOut()} />
+      <LogoutButton onClick={signOut} />
     </motion.div>
   );
 };
