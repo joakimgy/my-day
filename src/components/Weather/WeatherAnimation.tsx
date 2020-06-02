@@ -1,10 +1,9 @@
 import React from "react";
-import { WeatherCondition } from "../../api/weather";
 import Sun from "./Sun";
 import Rain from "./Rain";
 
 type WeatherAnimationProps = {
-  weatherCondition: WeatherCondition;
+  weatherCondition: string;
 };
 
 function WeatherAnimation({ weatherCondition }: WeatherAnimationProps) {

@@ -1,7 +1,7 @@
 import React from "react";
 import WeatherAnimation from "./Weather/WeatherAnimation";
-import { Weather } from "../api/weather";
 import { City } from "./CitySearch";
+import { Weather } from "../api/weather";
 
 type CityOverviewProps = {
   city?: City;
