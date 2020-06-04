@@ -14,7 +14,7 @@ export function App() {
         <nav
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
             alignItems: "center",
             width: "100vw",
             borderBottom: "solid 1px black",
@@ -22,7 +22,7 @@ export function App() {
           }}
         >
           <CitySearch onSelect={setCity} />
-          <span style={{ paddingRight: "10px" }}>{weather?.main}</span>
+          <span>WeatherAnimated</span>
         </nav>
         <WeatherAnimated weather={weather} />
       </div>
