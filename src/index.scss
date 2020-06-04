@@ -13,24 +13,6 @@ body {
   align-items: center;
 }
 
-// Button
-button {
-  width: 100%;
-  max-width: 360px;
-  color: rgba(255, 255, 255, 0.8);
-  background: #4caf50;
-  font-size: 1.5rem;
-  padding: 1.5rem;
-  border-radius: 3rem;
-  cursor: pointer;
-}
-
-button:hover,
-button:active,
-button:focus {
-  background: #43a047;
-}
-
 // Input
 input {
   width: 15rem;

@@ -1,3 +1,3 @@
-# my-day
+# WeatherAnimated
 
-Keeps me updated with everyday information that I need :)
+Animate some weather
