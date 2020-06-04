@@ -6,12 +6,14 @@ type CityOverviewProps = {
   weather?: Weather;
 };
 
-function AnimatedWeather({ weather }: CityOverviewProps) {
+function WeatherAnimated({ weather }: CityOverviewProps) {
   return (
     <div style={{ backgroundColor: "#47bfe4", height: "100vh" }}>
-      {weather && <WeatherAnimation weatherCondition={weather.main} />}
+      {false && weather && (
+        <WeatherAnimation weatherCondition={weather?.main} />
+      )}
     </div>
   );
 }
 
-export default AnimatedWeather;
+export default WeatherAnimated;

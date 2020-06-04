@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ErrorBoundary from "./components/Error/ErrorBoundary";
 import CitySearch, { City } from "./components/CitySearch";
 import useWeather from "./hooks/useWeather";
-import AnimatedWeather from "./components/AnimatedWeather";
+import WeatherAnimated from "./components/WeatherAnimated";
 
 export function App() {
   const [city, setCity] = useState<City>();
@@ -24,7 +24,7 @@ export function App() {
           <CitySearch onSelect={setCity} />
           <span style={{ paddingRight: "10px" }}>{weather?.main}</span>
         </nav>
-        <AnimatedWeather weather={weather} />
+        <WeatherAnimated weather={weather} />
       </div>
     </ErrorBoundary>
   );

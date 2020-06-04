@@ -3,7 +3,7 @@ import Sun from "./Sun";
 import Rain from "./Rain";
 
 type WeatherAnimationProps = {
-  weatherCondition: string;
+  weatherCondition?: string;
 };
 
 function WeatherAnimation({ weatherCondition }: WeatherAnimationProps) {

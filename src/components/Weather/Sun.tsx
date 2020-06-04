@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function Sun() {
   const sun: CSSProperties = {
-    position: "absolute",
+    position: "fixed",
     top: "15%",
     right: "10%",
   };
