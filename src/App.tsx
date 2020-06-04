@@ -21,7 +21,7 @@ export function App() {
         initial={{ scale: 0.5 }}
         animate={{ scale: 1.0, borderRadius: "10%" }}
       >
-        <CitySearch setCity={setCity} />
+        <CitySearch onSelect={setCity} />
         <CityOverview city={city} weather={weather} />
         <div style={{ minHeight: "20vh" }} />
       </motion.div>
