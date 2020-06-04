@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import ErrorBoundary from "./components/Error/ErrorBoundary";
 import CitySearch, { City } from "./components/CitySearch";
 import useWeather from "./hooks/useWeather";
-import { motion } from "framer-motion";
-import CityOverview from "./components/CityOverview";
+import AnimatedWeather from "./components/AnimatedWeather";
 
 export function App() {
   const [city, setCity] = useState<City>();
@@ -11,20 +10,22 @@ export function App() {
 
   return (
     <ErrorBoundary>
-      <motion.div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        initial={{ scale: 0.5 }}
-        animate={{ scale: 1.0, borderRadius: "10%" }}
-      >
-        <CitySearch onSelect={setCity} />
-        <CityOverview city={city} weather={weather} />
-        <div style={{ minHeight: "20vh" }} />
-      </motion.div>
+      <div>
+        <nav
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100vw",
+            borderBottom: "solid 1px black",
+            padding: "10px",
+          }}
+        >
+          <CitySearch onSelect={setCity} />
+          <span style={{ paddingRight: "10px" }}>{weather?.main}</span>
+        </nav>
+        <AnimatedWeather weather={weather} />
+      </div>
     </ErrorBoundary>
   );
 }

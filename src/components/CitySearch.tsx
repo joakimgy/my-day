@@ -48,6 +48,7 @@ function CitySearch({ onSelect }: CitySearchProps) {
 
   return (
     <Autocomplete
+      wrapperStyle={{ paddingLeft: "20px" }}
       getItemValue={(item) => item.description}
       items={suggestions}
       renderItem={(item, isHighlighted) => (
