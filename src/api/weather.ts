@@ -48,7 +48,7 @@ export type OpenWeatherAPI = {
 
 type Sys = {
   type?: number;
-  id: number;
+  id?: number;
   message?: number;
   country: string;
   sunrise: number;
@@ -140,7 +140,7 @@ const weatherDecoder = JsonDecoder.objectStrict<OpenWeatherAPI>(
     sys: JsonDecoder.object<Sys>(
       {
         type: JsonDecoder.optional(JsonDecoder.number),
-        id: JsonDecoder.number,
+        id: JsonDecoder.optional(JsonDecoder.number),
         message: JsonDecoder.optional(JsonDecoder.number),
         country: JsonDecoder.string,
         sunrise: JsonDecoder.number,

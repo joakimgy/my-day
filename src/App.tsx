@@ -21,7 +21,7 @@ export function App() {
           padding: "10px",
         }}
       >
-        <Ring width={50} />
+        <Ring width={50} animate={!weather} />
         <CitySearch onSelect={setCity} />
         <span>WeatherAnimated</span>
       </nav>
