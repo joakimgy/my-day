@@ -7,7 +7,7 @@ export async function fetchWeather(city: City) {
   } = city;
   const apiKey = process.env.REACT_APP_OPENWEATHERMAP_KEY;
   const weather = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
   )
     .then((response) => response.json())
     .then((responseJson) => {
