@@ -1,7 +1,7 @@
 import React from "react";
 import WeatherAnimation from "./Weather/WeatherAnimation";
 import { Weather } from "../api/weather";
-import Ring from "./Ring";
+import DelayedLoading from "./Loading/DelayedLoading";
 
 type CityOverviewProps = {
   weather?: Weather;
@@ -18,10 +18,11 @@ function WeatherAnimated({ weather }: CityOverviewProps) {
         paddingTop: "5rem",
       }}
     >
-      {false && weather && (
+      {weather ? (
         <WeatherAnimation weatherCondition={weather?.main} />
+      ) : (
+        <DelayedLoading />
       )}
-      <Ring width={100} />
     </div>
   );
 }

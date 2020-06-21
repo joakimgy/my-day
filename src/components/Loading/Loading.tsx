@@ -3,19 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { shuffle } from "lodash";
 
-const spring = {
-  type: "spring",
-  damping: 2,
-  stiffness: 50,
-};
-
-const ulStyle: CSSProperties = {
-  display: "flex",
-  width: "300px",
-  flexWrap: "wrap",
-};
-
-const liStyle: CSSProperties = {
+const square: CSSProperties = {
   listStyle: "none",
   borderRadius: "10px",
   marginBottom: "10px",
@@ -32,12 +20,23 @@ export const Loading = () => {
   }, [colors]);
 
   return (
-    <ul style={ulStyle}>
+    <ul
+      style={{
+        display: "flex",
+        width: "300px",
+        height: "300px",
+        flexWrap: "wrap",
+      }}
+    >
       {colors.map((background) => (
         <motion.li
           key={background}
-          layoutTransition={spring}
-          style={{ ...liStyle, background }}
+          layoutTransition={{
+            type: "spring",
+            damping: 50,
+            stiffness: 100,
+          }}
+          style={{ ...square, background }}
         />
       ))}
     </ul>

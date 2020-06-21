@@ -13,7 +13,6 @@ function Rain() {
           height: "100%",
           position: "absolute",
           width: "3px",
-          zIndex: -1,
           left: `${horizontalPosition}%`,
         };
 

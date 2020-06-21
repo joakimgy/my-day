@@ -43,6 +43,7 @@ export type OpenWeatherAPI = {
   id: number;
   name: string;
   cod: number;
+  rain?: Rain;
 };
 
 type Sys = {
@@ -82,6 +83,10 @@ export type Weather = {
 type Coord = {
   lon: number;
   lat: number;
+};
+
+type Rain = {
+  "1h": number;
 };
 
 const weatherDecoder = JsonDecoder.objectStrict<OpenWeatherAPI>(
@@ -147,6 +152,14 @@ const weatherDecoder = JsonDecoder.objectStrict<OpenWeatherAPI>(
     id: JsonDecoder.number,
     name: JsonDecoder.string,
     cod: JsonDecoder.number,
+    rain: JsonDecoder.optional(
+      JsonDecoder.object<Rain>(
+        {
+          "1h": JsonDecoder.number,
+        },
+        "rain"
+      )
+    ),
   },
   "OpenWeatherAPI"
 );
